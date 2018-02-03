@@ -1,0 +1,21 @@
+{% extends './layout.html' %}
+{% block content %}
+  <form action='/users' method='POST'>
+    <div class='form-group'>  
+      <label>User Name</label>
+      <input class="form-control" name='name' placeholder="Enter Your Name" />
+    </div>
+    <button class="btn btn-primary">Save User</button>
+  </form>
+  <ul class='list-group'>
+    {% for user in users %}
+    <li class='list-group-item'>
+      <strong><a href="/users/{{user.id}}"> {{user.name}} </a></strong>
+      <form method="POST" action="/users/{{user.id}}?_method=DELETE">
+      <br>
+      <button class='btn btn-danger'>Delete</button>
+    </li>
+    </form>
+    {% endfor %}
+  </ul>
+{% endblock %}
