@@ -5,6 +5,7 @@ nunjucks.configure({ noCache: true })
 const app = express();
 
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+app.use('/images', express.static('images'))
 
 app.use((req, res, next) => {
   res.locals.path = req.url;

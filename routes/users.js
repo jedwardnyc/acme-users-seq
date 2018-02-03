@@ -7,25 +7,25 @@ module.exports = app;
 app.get('/', (req,res,next)=>{
   User.findAll()
     .then( users => res.render('users', { title: 'Users', users }))
-    .catch(err => next(err))
+    .catch(err => res.render('error', {err}))
 });
 
 app.get('/:id', (req,res,next)=>{
   User.findById(req.params.id)
     .then( user => res.render('user', {title: user.name}))
-    .catch(err => next(err))
+    .catch(err => res.render('error', {err}))
 });
 
 app.post('/', (req,res,next)=>{
   User.create(req.body)
   .then(user => res.redirect('/users'))
-  .catch(err => next(err))
+  .catch(err => res.render('error', {err}))
 });
 
 app.delete('/:id', (req,res,next)=>{
   User.findById(req.params.id)
     .then( user => user.destroy())
     .then( ()=> res.redirect('/users'))
-    .catch(err => next(err))
+    .catch(err => res.render('error', {err}))
 });
 
