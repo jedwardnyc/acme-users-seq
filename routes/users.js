@@ -12,7 +12,7 @@ app.get('/', (req,res,next)=>{
 
 app.get('/:id', (req,res,next)=>{
   User.findById(req.params.id)
-    .then( user => res.render('user', {title: user.name}))
+    .then(user => res.render('user', {title: user.name, bio: user.bio, picture: user.picture, hometown: user.hometown}))
     .catch(err => res.render('error', {err}))
 });
 
