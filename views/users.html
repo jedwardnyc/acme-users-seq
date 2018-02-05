@@ -2,8 +2,12 @@
 {% block content %}
   <form action='/users' method='POST'>
     <div class='form-group'>  
-      <label>User Name</label>
+      <label><strong>User Info:</strong></label>
       <input class="form-control" name='name' placeholder="Enter Your Name" />
+      <br>
+      <input class="form-control" name='hometown' placeholder="Enter your Hometown (ex. New York, NY)" />
+      <br>
+      <input class="form-control" name='bio' placeholder="Tell us about yourself!" />
     </div>
     <button class="btn btn-primary">Save User</button>
   </form>
